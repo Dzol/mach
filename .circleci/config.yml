@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/elixir:1.5
+    working_directory: ~/mach
+    steps:
+      - checkout
+      - run: mix test
