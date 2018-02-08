@@ -7,7 +7,8 @@ defmodule Mach.Mixfile do
       version: "0.1.0",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
-      deps: deps()
+      deps: deps(),
+      aliases: aliases()
     ]
   end
 
@@ -19,5 +20,14 @@ defmodule Mach.Mixfile do
 
   defp deps do
     []
+  end
+
+  defp aliases do
+    [nuke: &nuke/1]
+  end
+
+  defp nuke(_) do
+    File.rm("time.data")
+    File.rm_rf("_build")
   end
 end

@@ -25,8 +25,13 @@ defmodule MachTest do
     assert Mach.Stack.maximum(x) === 42
   end
 
+  @tag :measure
   test "time complexity" do
-    measure()
+    m = measure()
+    |> Enum.map(&Integer.to_string/1)
+    |> Enum.map(&Kernel.<>(&1, "\n"))
+    |> Enum.reduce("", &Kernel.<>/2)
+    File.write("time.data", m)
   end
 
   defp measure do
