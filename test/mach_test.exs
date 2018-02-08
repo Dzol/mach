@@ -42,22 +42,21 @@ defmodule MachTest do
     []
   end
   defp measure(x, n) do
-    y = insert(x)
-    {t, {_, z}} = :timer.tc(&extract/1, [y])
-    [t|measure(z, n - 1)]
+    y = push(x)
+    {t, _} = :timer.tc(&peek/1, [y])
+    [t|measure(y, n - 1)]
   end
 
   defp draw do
     Enum.random(0..255)
   end
 
-  defp insert(x) do
-    x
-    |> Mach.Stack.push(draw())
-    |> Mach.Stack.push(draw())
+  defp push(x) do
+    Mach.Stack.push(x, draw())
   end
 
-  defp extract(x) do
-    :timer.sleep(1); Mach.Stack.pop(x)
+  defp peek(x) do
+    ## No reason this couldn't be maximum/1
+    :timer.sleep(1); Mach.Stack.minimum(x)
   end
 end
