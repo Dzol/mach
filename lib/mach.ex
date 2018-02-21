@@ -17,16 +17,16 @@ defmodule Mach do
       {e, {r,s,t}}
     end
 
-    def peek({_, [e|_], _}) do
-      e
+    def peek({_, s, _}) do
+      List.first(s)
     end
 
-    def minimum({[x|_], _, _}) do
-      x
+    def minimum({x, _, _}) do
+      List.first(x)
     end
 
-    def maximum({_, _, [x|_]}) do
-      x
+    def maximum({_, _, x}) do
+      List.first(x)
     end
   end
 end
