@@ -6,4 +6,6 @@ jobs:
     working_directory: ~/mach
     steps:
       - checkout
+      - run: mix local.hex --force
+      - run: mix deps.get
       - run: mix test

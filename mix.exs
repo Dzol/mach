@@ -19,7 +19,7 @@ defmodule Mach.Mixfile do
   end
 
   defp deps do
-    []
+    [{:stream_data, "~> 0.4"}]
   end
 
   defp aliases do
